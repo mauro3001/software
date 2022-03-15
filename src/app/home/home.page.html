@@ -1,0 +1,41 @@
+<ion-content>
+  <ion-slides [options]="slideOpts">
+
+    <ion-slide>
+      <img src = "assets/img/Instructivo 2.svg"/>
+      <div id="columna2">
+        <ion-button (click)="swipeNext()">Siguiente</ion-button>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <img src = "assets/img/Instructivo 3.svg"/>
+      <div id="columna1">
+        <ion-button (click)="swipePrevious()">Anterior</ion-button>
+      </div>
+      <div id="columna2">
+        <ion-button (click)="swipeNext()">Siguiente</ion-button>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <img src = "assets/img/Instructivo 4.svg"/>
+      <div id="columna1">
+        <ion-button (click)="swipePrevious()">Anterior</ion-button>
+      </div>
+      <div id="columna2">
+        <ion-button (click)="swipeNext()">Siguiente</ion-button>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <img src = "assets/img/Instructivo 5.svg"/>
+      <div id="columna1">
+        <ion-button (click)="swipePrevious()">Anterior</ion-button>
+      </div>
+      <div id="columna2">
+        <ion-button [routerLink]="['/login']">Siguiente</ion-button>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

@@ -1,0 +1,8 @@
+{
+  "name": "BridgeSD",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}

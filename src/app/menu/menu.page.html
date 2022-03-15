@@ -1,0 +1,108 @@
+<ion-split-pane contentId="main">
+  <ion-menu side="start" menuId="first" contentId="main">
+    <ion-header>
+      <div class="container0">
+        <ion-toolbar class="tam" color="success">
+          <ion-icon class="icon2" name="person"></ion-icon>
+          <ion-title class="name">{{infoUser.nombre}}</ion-title>
+        </ion-toolbar>
+        </div>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle auto-hide="false" *ngFor="let pagina of paginas; let i=index">
+          <ion-item (click)="cambiarIndiceSeleccionado(i)" routerDirection="root" [routerLink]="[pagina.url]"
+            lines="none" detail="false" [class.selected]="indiceSeleccionado === i">
+            <ion-icon slot="start" [name]="pagina.icono + '-outline'"></ion-icon>
+            <ion-label color="primary">{{pagina.titulo}}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false">
+          <ion-accordion-group>
+            <ion-accordion>
+              <ion-item slot="header">
+                <ion-icon slot="start" name="people-outline"></ion-icon>
+                <ion-label>Cambiar de perfil</ion-label>
+              </ion-item>
+              <ion-list slot="content" *ngFor="let user of changeUser; let j=index" style="padding:0px;">
+                <ion-item style="margin-left: 60px;" (click)="cambiarIndiceSeleccionado2(j, user)" routerDirection="root" [routerLink]="[rutaChangeUser[j]]"
+                  lines="none">
+                  <ion-label color="primary">{{user}}</ion-label>
+                </ion-item>
+              </ion-list>
+            </ion-accordion>
+          </ion-accordion-group>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item (click)="salir()" routerDirection="root" lines="none" detail="false">
+            <ion-icon slot="start" [name]="'exit-outline'"></ion-icon>
+            <ion-label>Salir</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="main" main></ion-router-outlet>
+
+  <ion-tabs *ngIf="infoUser.tipoUser==='vendedor'" id="tabVend">
+    <ion-tab-bar slot="bottom" color="success">
+      <ion-tab-button tab="solicitudes" [routerLink]="['/menu/solicitudes-vendedor']">
+        <ion-icon name="reader"></ion-icon>
+        <ion-label>solicitudes</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="inicio" [routerLink]="['/menu/productos']">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Inicio</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="entregas" [routerLink]="['/menu/despachos-vendedor']">
+        <ion-icon name="calendar"></ion-icon>
+        <ion-label>Entregas</ion-label>
+        <!-- <ion-badge>6</ion-badge> -->
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+
+  <ion-tabs *ngIf="infoUser.tipoUser==='transportador'">
+    <ion-tab-bar slot="bottom" color="success">
+
+      <ion-tab-button tab="inicio" [routerLink]="['/menu/inicio-transportador']">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Inicio</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="en_espera" [routerLink]="['/solicitudes-espera']">
+        <ion-icon name="hourglass-outline"></ion-icon>
+        <ion-label>En espera</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="programados" [routerLink]="['/envios-programados']">
+        <ion-icon name="calendar-outline"></ion-icon>
+        <ion-label>Programados</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="entregas" [routerLink]="['/entregas-envios']">
+        <ion-icon name="checkmark-done-outline"></ion-icon>
+        <ion-label>Entregas</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+
+  <ion-tabs *ngIf="infoUser.tipoUser==='comprador'">
+    <ion-tab-bar slot="bottom" color="success">
+      <ion-tab-button tab="solicitudes">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Inicio</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="entregas" [routerLink]="['/noticias']">
+        <ion-icon name="calendar"></ion-icon>
+        <ion-label>Noticias</ion-label>
+        <!-- <ion-badge>6</ion-badge> -->
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-split-pane>

@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-menu-button><ion-icon name="person-circle-outline"></ion-icon></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="espacio5">Solicitudes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <img src="assets/img/mapa.svg" id="imagen">
+  <ion-fab class="final2" horizontal="center" [routerLink]="['/ofertas']" slot="fixed">
+    <ion-fab-button class="boton-up1">
+      <ion-icon class="boton-up" name="arrow-up-circle"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+<ion-list class="quitar">
+
+  <ion-card class="final" *ngFor="let oferta of ofertas" [routerLink]="['/ofertas', oferta.id]">
+
+    <div class="space2 tablita">
+
+
+      <div class="space1">
+
+        <div class="space2 lola">
+          <ion-avatar name="person-circle-outline">
+            <ion-img class="lola" [src]="oferta.imageUrl1">
+            </ion-img>
+          </ion-avatar>
+        </div>
+
+        <div class="space2 data">
+
+          <div class="space2 tunning2">
+          <div class="space1">
+            {{oferta.rol1}}
+          </div>
+          <div class="space1">
+            {{oferta.name1}}
+          </div>
+        </div>
+
+        <div class="space2 tunning3">
+          <div class="space1 right">
+            {{oferta.rol2}}
+          </div>
+          <div class="space1 right">
+            {{oferta.name2}}
+          </div>
+        </div>
+
+        </div>
+
+        <div class="space2 lola">
+          <ion-avatar name="person-circle-outline">
+            <ion-img class="lola" [src]="oferta.imageUrl2">
+            </ion-img>
+          </ion-avatar>
+        </div>
+
+      </div>
+
+      <div class="space1">
+
+        <div class="space2 tunning4">
+          <div class="space1">
+            {{oferta.from}}
+          </div>
+          <div class="space1">
+            {{oferta.desde}}
+          </div>
+        </div>
+
+        <div class="space2 tunning5">
+          <div class="space1 right">
+            {{oferta.to}}
+          </div>
+          <div class="space1 right">
+            {{oferta.hasta}}
+          </div>
+        </div>
+      </div>
+
+      <div class="space1">
+        <h3 class="info10">{{oferta.final}}{{oferta.producto}}</h3>
+      </div>
+    </div>
+</ion-card>
+
+</ion-list>
+
+</ion-content>
